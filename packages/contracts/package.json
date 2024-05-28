@@ -1,6 +1,6 @@
 {
     "name": "solidity-next-js-starter-contracts",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "A basic contract for starting to build full stack Ethereum dApps",
     "main": "index.js",
     "author": "Tom Hirst <hello@tomhirst.com>",
@@ -9,8 +9,8 @@
         "start": "hardhat node",
         "test": "hardhat test",
         "deploy": "hardhat run --network localhost scripts/deploy.ts",
-        "deploy:goerli": "hardhat run --network goerli scripts/deploy.ts",
-        "verify:goerli": "hardhat verify --network goerli",
+        "deploy:sepolia": "hardhat run --network sepolia scripts/deploy.ts",
+        "verify:sepolia": "hardhat verify --network sepolia",
         "format": "prettier --write \"./contracts/**/*.sol\" --plugin prettier-plugin-solidity && prettier --write \"./**/*.ts\""
     },
     "devDependencies": {

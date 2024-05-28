@@ -32,7 +32,7 @@ If you want to learn how to interact with a simple smart contract from the clien
 - `yarn start` - Starts your local Hardhat network
 - `yarn test` - Tests `Greeter.sol`'s functionality
 - `yarn deploy` - Deploys `Greeter.sol` to your local Hardhat network
-- `yarn deploy:goerli` - Deploys `Greeter.sol` to the Goerli test network
+- `yarn deploy:sepolia` - Deploys `Greeter.sol` to the Sepolia test network
 - `yarn format` - Formats all code using Prettier
 
 ### App
@@ -69,7 +69,7 @@ How to get running on your local machine:
 
 ### Initial Setup
 
-Use `git clone git clone https://github.com/tomhirst/solidity-nextjs-starter.git` to clone this repository to your local machine.
+Use `git clone https://github.com/tomhirst/solidity-nextjs-starter.git` to clone this repository to your local machine.
 
 Enter the repository folder with `cd solidity-nextjs-starter`, then install all dependencies using `yarn`.
 
@@ -118,30 +118,30 @@ Instructions for deploying the smart contract and application to publically view
 
 ### Advanced Contracts
 
-Up to now, your smart contract has been running locally. The next step is to deploy it to a live test network. We'll use [Goerli](https://goerli.net/) for this.
+Up to now, your smart contract has been running locally. The next step is to deploy it to a live test network. We'll use [Sepolia](https://www.alchemy.com/overviews/sepolia-testnet) for this.
 
-#### Deploying to Goerli Testnet
+#### Deploying to Sepolia Testnet
 
-First you need some Goerli test ETH. You can get some from a [Goerli Faucet](https://goerlifaucet.com/).
+First you need some Sepolia test ETH. You can get some from a [Sepolia Faucet](https://www.alchemy.com/faucets/ethereum-sepolia).
 
-In the `packages/contracts` directory, duplicate `.env.example` to `.env`. You'll need an [Alchemy API key](https://docs.alchemy.com/docs/alchemy-quickstart-guide#1key-create-an-alchemy-key) and the private key of the wallet you'd like to deploy your Goerli contract from. I recommend using a burner account that doesn't hold any valuable assets on other chains.
+In the `packages/contracts` directory, duplicate `.env.example` to `.env`. You'll need an [Alchemy API key](https://docs.alchemy.com/docs/alchemy-quickstart-guide#1key-create-an-alchemy-key) and the private key of the wallet you'd like to deploy your Sepolia contract from. I recommend using a burner account that doesn't hold any valuable assets on other chains.
 
 Set the environment variables like so:
 
 ```bash
 ALCHEMY_API_KEY=[your-api-key]
-GOERLI_PRIVATE_KEY=[your-private-key]
+SEPOLIA_PRIVATE_KEY=[your-private-key]
 ```
 
-Finally, run `yarn deploy:goerli`. If you're successful, you'll get a message ike this in your terminal window:
+Finally, run `yarn deploy:sepolia`. If you're successful, you'll get a message ike this in your terminal window:
 
 ```bash
-Greeter with greeting "Hello, world!" deployed to 0x2D3Dff7366c8FA680801E563E008C8303B36FBC6
+Greeter with greeting "Hello, world!" deployed to 0xE47c47B1db8823BA54aae021cfce03b2d37B52a8
 ```
 
-Here's a version of the contract I deployed earlier: [0x2D3Dff7366c8FA680801E563E008C8303B36FBC6](https://goerli.etherscan.io/address/0x2D3Dff7366c8FA680801E563E008C8303B36FBC6)
+Here's a version of the contract I deployed earlier: [0xE47c47B1db8823BA54aae021cfce03b2d37B52a8](https://sepolia.etherscan.io/address/0xE47c47B1db8823BA54aae021cfce03b2d37B52a8)
 
-#### Verifying Your Contract on Goerli
+#### Verifying Your Contract on Sepolia
 
 Let's verify your newly deployed contract with Etherscan. First, get an Etherscan API key [here](https://docs.etherscan.io/getting-started/viewing-api-usage-statistics). Then add it to your `.env` file:
 
@@ -149,7 +149,7 @@ Let's verify your newly deployed contract with Etherscan. First, get an Ethersca
 ETHERSCAN_API_KEY=[your-api-key]
 ```
 
-Run `yarn verify:goerli [your-contract-address] 'Hello, world!'` to verify your contract. Be sure to pass the address of the contract you just deployed and the constructor parameter, which in this case is the default greeting.
+Run `yarn verify:sepolia [your-contract-address] 'Hello, world!'` to verify your contract. Be sure to pass the address of the contract you just deployed and the constructor parameter, which in this case is the default greeting.
 
 If you're successful, you'll get a message like this:
 
@@ -171,24 +171,30 @@ Add this to `.env` in `packages/app` like so:
 ALCHEMY_API_KEY=[your-api-key]
 ```
 
-This will let you point your front end at a publically viewable contract on a network like Goerli or mainnet.
+This will let you point your front end at a publically viewable contract on a network like Sepolia or mainnet.
 
 #### Deploying to Vercel
 
 You can deploy the application to Vercel by clicking this button:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftomhirst%2Fsolidity-nextjs-starter)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftomhirst%2Fsolidity-nextjs-starter%2Ftree%2Fmain%2Fpackages%2Fapp)
 
 Be sure to deploy from the `packages/app` directory and set these environment variables:
 
 ```bash
 NEXT_PUBLIC_ALCHEMY_API_KEY=[your-api-key]
-NEXT_PUBLIC_CONTRACT_ADDRESS==[your-contract-address]
+NEXT_PUBLIC_CONTRACT_ADDRESS=[your-contract-address]
 NEXT_PUBLIC_CHAIN_ID=[your-chain-id]
 NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID=[your-project-id]
 ```
 
-Here's an app I deployed earlier: [Add later](https://vercel.com)
+Here's an app I deployed earlier: [https://solidity-nextjs-starter-app.vercel.app/](https://solidity-nextjs-starter-app.vercel.app/)
+
+## Why I Built This
+
+I built this to onboard myself to web3. Since 2021, Solidity Next.js Starter has amassed 100s of GitHub stars and helped devs land dream gigs in the space.
+
+![A tweet exchange](./why-i-built-this.png)
 
 ## Contributions
 
